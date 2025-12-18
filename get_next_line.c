@@ -10,27 +10,25 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+
 #include "get_next_line.h"
 
 char	*get_next_line(int fd)
 {
 	static char	*str;
 	char	*buff;
-	int			i;
+	size_t		line;
 
 	buff = malloc(BUFFER_SIZE + 1);
 	if (!buff)
 		return (NULL);
-	i = 0;
-	while (str[i])
+	line = 0;
+	while (!ft_strchr(str, '\n'))
 	{
-		if (!ft_strchr(str, '\n'))
-		{
-			separate_line(buff);
-			read(fd, buff, BUFFER_SIZE);
-		}
-		i++;
+		line += read(fd, buff, BUFFER_SIZE);
+		separate_line(str);
 	}
+	return (line);
 }
 
 static	char	*separate_line(char *old_buff)
@@ -42,7 +40,15 @@ static	char	*separate_line(char *old_buff)
 	i = 0;
 	while (old_buff[i] && old_buff[i] != '\n')
 		i++;
+	if (old_buff[i] == '\0')
+	{
+		free(old_buff);
+		return (NULL);
+	}
 	new_buff = malloc(ft_strlen(old_buff) - i + 1);
+	if (!new_buff)
+		return (NULL);
+	i++;
 	j = 0;
 	while (old_buff[i] != '\0')
 	{
@@ -51,5 +57,6 @@ static	char	*separate_line(char *old_buff)
 		j++;
 	}
 	new_buff[j] = '\0';
+	free(old_buff);
 	return (new_buff);
 }
