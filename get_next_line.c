@@ -6,10 +6,9 @@
 /*   By: kel-gher <kel-gher@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/13 15:47:56 by kel-gher          #+#    #+#             */
-/*   Updated: 2025/12/17 16:37:54 by kel-gher         ###   ########.fr       */
+/*   Updated: 2025/12/18 17:03:52 by kel-gher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "get_next_line.h"
 
@@ -17,18 +16,22 @@ char	*get_next_line(int fd)
 {
 	static char	*str;
 	char	*buff;
-	size_t		line;
+	size_t		lire;
+	char	*extract;
 
 	buff = malloc(BUFFER_SIZE + 1);
 	if (!buff)
 		return (NULL);
-	line = 0;
-	while (!ft_strchr(str, '\n'))
+	lire = 0;
+	while (!str ||!ft_strchr(str, '\n'))
 	{
-		line += read(fd, buff, BUFFER_SIZE);
-		separate_line(str);
+		lire = read(fd, buff, BUFFER_SIZE);
+		buff[lire] = '\0';
+		str = ft_strjoin(str, buff);
 	}
-	return (line);
+	extract = (char *)extract_line(str);
+	str = separate_line(str);
+	return (extract);
 }
 
 static	char	*separate_line(char *old_buff)
@@ -59,4 +62,30 @@ static	char	*separate_line(char *old_buff)
 	new_buff[j] = '\0';
 	free(old_buff);
 	return (new_buff);
+}
+
+static char	*extract_line(char *s)
+{
+	char	*new;
+	int		i;
+
+	i = 0;
+
+	while (s[i] && s[i] != '\n')
+		i++;
+	if (s[i] == '\n')
+		i++;
+	new = malloc(ft_strlen(s) - i + 2);
+	if (!new)
+		return (NULL);
+	i = 0;
+	while (s[i] && s[i] != '\n')
+	{
+		new[i] = s[i];
+		i++;
+	}
+	new[i] = '\n';
+	i++;
+	new[i] = '\0';
+	return (new);
 }
