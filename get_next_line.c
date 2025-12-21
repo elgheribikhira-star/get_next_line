@@ -23,7 +23,8 @@ char	*separate_line(char *old_buff)
 		return (NULL);
 	while (old_buff[i] && old_buff[i] != '\n')
 		i++;
-	i++;
+	if (old_buff[i] != '\0')
+		i++;
 	if (old_buff[i] == '\0')
 	{
 		free(old_buff);
@@ -82,10 +83,18 @@ char	*get_next_line(int fd)
 
 	extract = NULL;
 	if (fd < 0 || BUFFER_SIZE <= 0)
+	{
+		free (str);
+		str = NULL;
 		return (NULL);
+	}
 	buff = malloc(BUFFER_SIZE + 1);
 	if (!buff)
+	{
+		free(str);
+		str = NULL;
 		return (NULL);
+	}
 	while (!str || !ft_strchr(str, '\n'))
 	{
 		lire = read(fd, buff, BUFFER_SIZE);
@@ -103,6 +112,8 @@ char	*get_next_line(int fd)
 		if (!str)
 		{
 			free(buff);
+			free(str);
+			str = NULL;
 			return (NULL);
 		}
 	}
@@ -113,6 +124,7 @@ char	*get_next_line(int fd)
 		{
 			free(buff);
 			free(str);
+			str = NULL;
 			return (NULL);
 		}
 		str = separate_line(str);
@@ -120,4 +132,5 @@ char	*get_next_line(int fd)
 	free(buff);
 	return (extract);
 }
+
 
