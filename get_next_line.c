@@ -6,7 +6,7 @@
 /*   By: kel-gher <kel-gher@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/13 15:47:56 by kel-gher          #+#    #+#             */
-/*   Updated: 2025/12/19 17:54:49 by kel-gher         ###   ########.fr       */
+/*   Updated: 2025/12/21 12:19:29 by kel-gher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,15 @@ char	*separate_line(char *old_buff)
 		return (NULL);
 	while (old_buff[i] && old_buff[i] != '\n')
 		i++;
-	// if (old_buff[i] == '\0')
-	// {
-	// 	free(old_buff);
-	// 	return (NULL);
-	// }
+	i++;
+	if (old_buff[i] == '\0')
+	{
+		free(old_buff);
+		return (NULL);
+	}
 	new_buff = malloc(ft_strlen(old_buff) - i + 1);
 	if (!new_buff)
 		return (NULL);
-	i++;
 	j = 0;
 	while (old_buff[i] != '\0')
 	{
@@ -92,6 +92,8 @@ char	*get_next_line(int fd)
 		if (lire == -1)
 		{
 			free(buff);
+			free(str);
+			str = NULL;
 			return (NULL);
 		}
 		if (lire == 0)
@@ -110,6 +112,7 @@ char	*get_next_line(int fd)
 		if (!extract)
 		{
 			free(buff);
+			free(str);
 			return (NULL);
 		}
 		str = separate_line(str);
