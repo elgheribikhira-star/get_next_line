@@ -82,55 +82,45 @@ char	*get_next_line(int fd)
 	char	*extract;
 
 	extract = NULL;
+	buff = NULL;
 	if (fd < 0 || BUFFER_SIZE <= 0)
-	{
-		free (str);
-		str = NULL;
-		return (NULL);
-	}
+		return(free_null(&str,buff));
 	buff = malloc(BUFFER_SIZE + 1);
 	if (!buff)
-	{
-		free(str);
-		str = NULL;
-		return (NULL);
-	}
+		return(free_null(&str, buff));
 	while (!str || !ft_strchr(str, '\n'))
 	{
 		lire = read(fd, buff, BUFFER_SIZE);
 		if (lire == -1)
-		{
-			free(buff);
-			free(str);
-			str = NULL;
-			return (NULL);
-		}
+			return(free_null(&str,buff));
 		if (lire == 0)
 			break;
 		buff[lire] = '\0';
 		str = ft_strjoin_null(str, buff);
 		if (!str)
-		{
-			free(buff);
-			free(str);
-			str = NULL;
-			return (NULL);
-		}
+			return(free_null(&str, buff));
 	}
 	if (str != NULL && str[0] != '\0')
 	{
 		extract = extract_line(str);
 		if (!extract)
-		{
-			free(buff);
-			free(str);
-			str = NULL;
-			return (NULL);
-		}
+			return(free_null(&str, buff));
 		str = separate_line(str);
 	}
 	free(buff);
 	return (extract);
+}
+
+char	*free_null(char **str, char *buff)
+{
+	if (buff)
+		free(buff);
+	if (*str)
+	{
+		free(*str);
+		*str = NULL;
+	}
+	return (NULL);
 }
 
 
