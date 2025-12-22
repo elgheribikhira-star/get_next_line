@@ -35,11 +35,7 @@ char	*separate_line(char *old_buff)
 		return (NULL);
 	j = 0;
 	while (old_buff[i] != '\0')
-	{
-		new_buff[j] = old_buff[i];
-		i++;
-		j++;
-	}
+		new_buff[j++] = old_buff[i++];
 	new_buff[j] = '\0';
 	free(old_buff);
 	return (new_buff);
@@ -51,7 +47,6 @@ char	*extract_line(char *s)
 	int		i;
 
 	i = 0;
-
 	while (s[i] && s[i] != '\n')
 		i++;
 	if (s[i] == '\n')
@@ -77,38 +72,30 @@ char	*extract_line(char *s)
 char	*get_next_line(int fd)
 {
 	static char	*str;
-	char	*buff;
+	char		*buff;
 	ssize_t		lire;
-	char	*extract;
+	char		*extract;
 
 	extract = NULL;
 	buff = NULL;
 	if (fd < 0 || BUFFER_SIZE <= 0)
-		return(free_null(&str,buff));
+		return (free_null(&str, buff));
 	buff = malloc(BUFFER_SIZE + 1);
 	if (!buff)
-		return(free_null(&str, buff));
+		return (free_null(&str, buff));
 	while (!str || !ft_strchr(str, '\n'))
 	{
 		lire = read(fd, buff, BUFFER_SIZE);
 		if (lire == -1)
-			return(free_null(&str,buff));
+			return (free_null(&str, buff));
 		if (lire == 0)
-			break;
+			break ;
 		buff[lire] = '\0';
 		str = ft_strjoin_null(str, buff);
 		if (!str)
-			return(free_null(&str, buff));
+			return (free_null(&str, buff));
 	}
-	if (str != NULL && str[0] != '\0')
-	{
-		extract = extract_line(str);
-		if (!extract)
-			return(free_null(&str, buff));
-		str = separate_line(str);
-	}
-	free(buff);
-	return (extract);
+	return (finish_line(&str, buff));
 }
 
 char	*free_null(char **str, char *buff)
@@ -121,6 +108,22 @@ char	*free_null(char **str, char *buff)
 		*str = NULL;
 	}
 	return (NULL);
+}
+
+char	*finish_line(char **str, char *buff)
+{
+	char	*extract;
+
+	extract = NULL;
+	if (*str != NULL)
+	{
+		extract = extract_line(*str);
+		if (!extract)
+			return (free_null(str, buff));
+		*str = separate_line(*str);
+	}
+	free(buff);
+	return (extract);
 }
 
 
