@@ -38,17 +38,14 @@ int main(void)
 }
 
 ```
-and the file `tst.txt` contains :
+And the file `tst.txt` contains:
+
 **tst.txt:**
 ```text
 hello
-
 you
 
-
 The expected output is :
-**tst.txt:**
-```text
 hello
 you
 
@@ -56,6 +53,7 @@ you
 
 
 ## Algorithms and data structures
+
 
 
 
