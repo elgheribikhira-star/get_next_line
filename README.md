@@ -10,8 +10,15 @@ that was read by including `\n`, and return `NULL`, if there is nothing else to 
 ## Instructions
 
 ### Compilation
-To compile the code, create a main.c file and also a  :
+To compile the code, create a main.c file, open a file descriptor and compile it like this :
 
+cc -Wall -Wextra -Werror -D BUFFER_SIZE=n get_next_line.c get_next_line_utils.c main.c
+ where n is a given value.
+ 
+ NB : instead of writing all C files, this can also work, only if the folder contains get_next_line.c get_next_line_utils.c
+ 
+ cc -Wall -Wextra -Werror -D BUFFER_SIZE=n *.c
+### Examples of compilation
 This is an example of a main.c 
 ```c
 #include <fcntl.h>
@@ -31,11 +38,16 @@ int main(void)
 }
 
 ```
-and the file tst.txt contains ; 
+and the file tst.txt contains :
+**tst.txt:**
+```text
 hello
 you
 
+
 The expected output is :
+**tst.txt:**
+```text
 hello
 you
 
@@ -43,5 +55,6 @@ you
 
 
 ## Algorithms and data structures
+
 
 
