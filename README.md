@@ -10,14 +10,38 @@ that was read by including `\n`, and return `NULL`, if there is nothing else to 
 ## Instructions
 
 ### Compilation
-To compile the code, create a main that contain :
+To compile the code, create a main.c file and also a  :
 
+This is an example of a main.c 
 ```c
+#include <fcntl.h>
+#include <stdio.h>
+#include "get_next_line.h"
 int main(void)
 {
-  whi
+	int fd = open("tst.txt", O_RDONLY);
+	char	*line;
+	while ((line = get_next_line(fd)) != NULL)
+	{
+		printf("%s", line);
+		free(line);
+	}
+	close(fd);
+	return(0);
+}
+
 ```
+and the file tst.txt contains ; 
+hello
+you
+
+The expected output is :
+hello
+you
+
 # Resources
 
+
 ## Algorithms and data structures
+
 
