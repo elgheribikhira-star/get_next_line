@@ -47,13 +47,15 @@ you
 
 ```
 The expected output is :
+```text
 hello
 you
-
+```
 # Resources
 
 
 ## Algorithms and data structures
+
 
 
 
