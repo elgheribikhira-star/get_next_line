@@ -7,8 +7,7 @@ to be called repeatedly. A key feature of this project is the use of static vari
 successive calls. Furthermore, strict memory management is required to ensure that all memory leaks are avoided. The function returns line 
 that was read by including `\n`, and return `NULL`, if there is nothing else to read or if an error occurs.
 
-## Instructions
-
+⚙️ Instructions
 ### Compilation
 To compile the code, create a main.c file, open a file descriptor and compile it like this :
 
@@ -18,7 +17,7 @@ cc -Wall -Wextra -Werror -D BUFFER_SIZE=n get_next_line.c get_next_line_utils.c 
  NB : instead of writing all C files, this can also work, only if the folder contains get_next_line.c get_next_line_utils.c
  
  cc -Wall -Wextra -Werror -D BUFFER_SIZE=n *.c
-### Example of compilation
+### Usage Example
 This is an example of a main.c 
 ```c
 #include <fcntl.h>
@@ -54,6 +53,7 @@ you
 
 
 ## Algorithms and data structures
+
 
 
 
