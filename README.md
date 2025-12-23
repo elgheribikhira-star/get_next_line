@@ -38,10 +38,11 @@ int main(void)
 }
 
 ```
-and the file tst.txt contains :
+and the file `tst.txt` contains :
 **tst.txt:**
 ```text
 hello
+
 you
 
 
@@ -55,6 +56,7 @@ you
 
 
 ## Algorithms and data structures
+
 
 
 
