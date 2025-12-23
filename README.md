@@ -60,23 +60,8 @@ The following resources were consulted to clarify the concept.
 - [Video Tutorial - Static Variables](https://www.youtube.com/watch?v=Hm5Jc7ajZsk)
 
 ### AI Usage
-AI was employed like an educational tool to explain me things that I didn't understand and also to debug in the codes.
+AI was employed like an educational tool to clarify concepts and to assist with debugging the code.
 
-## Algorithms and data structures
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+## Algorithms
 
 
