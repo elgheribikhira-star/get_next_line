@@ -1,4 +1,4 @@
-*This project has been created as part of the 42 curriculum by kel-ger*
+*This project has been created as part of the 42 curriculum by </kel-ger>*
 
 ## Description
 
@@ -63,6 +63,7 @@ The following resources were consulted to clarify the concept.
 AI was employed like an educational tool to explain me things that I didn't understand and also to debug in the codes.
 
 ## Algorithms and data structures
+
 
 
 
