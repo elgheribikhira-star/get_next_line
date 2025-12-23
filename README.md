@@ -62,6 +62,13 @@ The following resources were consulted to clarify the concept.
 ### AI Usage
 AI was employed like an educational tool to clarify concepts and to assist with debugging the code.
 
-## Algorithms
+## 🧠 Algorithms
+The Algorithm consists of several key steps :
 
+- Initialization : The process start with the static variable set to `NULL`.
+- Reading and Storage : A buffer of size `BUFFER_SIZE` is allocated dynamically. The data is read and is stored in the static variable until the first occurrence of `\n` appears , or the end of the file is reached.
+- Extraction : The line is extracted from the static variable when `\n` appears.
+- Remainder management : The content remaining after `\n` is isolated and saved back into the static variable.
+
+  
 
