@@ -9,18 +9,17 @@ that was read by including `\n`, and return `NULL`, if there is nothing else to 
 
 ## ⚙️ Instructions
 ### Compilation
-To compile the code, create a main.c file, open a file descriptor and compile it like this :
+The code is compiled using the following command.
 ```bash
 cc -Wall -Wextra -Werror -D BUFFER_SIZE=n get_next_line.c get_next_line_utils.c main.c
 ```
  where n is a given value.
- 
- NB : instead of writing all C files, this can also work, only if the folder contains get_next_line.c get_next_line_utils.c
+ Note : `*.c` may be used if the directory only contains the relevant project files.
  ```bash
  cc -Wall -Wextra -Werror -D BUFFER_SIZE=n *.c
 ```
 ### Usage Example
-This is an example of a main.c 
+The following main.c serves as an example to test the 
 ```c
 #include <fcntl.h>
 #include <stdio.h>
@@ -39,7 +38,7 @@ int main(void)
 }
 
 ```
-And the file `tst.txt` contains:
+With a test file named `tst.txt` containing:
 
 **tst.txt:**
 ```text
@@ -51,10 +50,20 @@ The expected output is :
 hello
 you
 ```
-# Resources
+## 📚 Resources
+### Static Variables
+One of the goals of this project was the discovery and implementation of static variables.
+The following resources were consulted to clarify the concept.
 
+- [GeeksforGeeks - Static Variables](https://www.geeksforgeeks.org/c/static-variables-in-c/)
+- [Codequoi - Variables en C](https://www.codequoi.com/variables-locales-globales-statiques-en-c/)
+- [Video Tutorial - Static Variables](https://www.youtube.com/watch?v=Hm5Jc7ajZsk)
+
+### AI Usage
+AI was employed like an educational tool to explain me things that I didn't understand and also to debug in the codes.
 
 ## Algorithms and data structures
+
 
 
 
