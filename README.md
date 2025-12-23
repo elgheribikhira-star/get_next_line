@@ -18,7 +18,7 @@ cc -Wall -Wextra -Werror -D BUFFER_SIZE=n get_next_line.c get_next_line_utils.c 
  NB : instead of writing all C files, this can also work, only if the folder contains get_next_line.c get_next_line_utils.c
  
  cc -Wall -Wextra -Werror -D BUFFER_SIZE=n *.c
-### Examples of compilation
+### Example of compilation
 This is an example of a main.c 
 ```c
 #include <fcntl.h>
@@ -55,6 +55,7 @@ you
 
 
 ## Algorithms and data structures
+
 
 
 
