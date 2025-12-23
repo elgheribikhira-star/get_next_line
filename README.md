@@ -7,7 +7,7 @@ to be called repeatedly. A key feature of this project is the use of static vari
 successive calls. Furthermore, strict memory management is required to ensure that all memory leaks are avoided. The function returns line 
 that was read by including `\n`, and return `NULL`, if there is nothing else to read or if an error occurs.
 
-⚙️ Instructions
+### ⚙️ Instructions
 ### Compilation
 To compile the code, create a main.c file, open a file descriptor and compile it like this :
 
@@ -53,6 +53,7 @@ you
 
 
 ## Algorithms and data structures
+
 
 
 
