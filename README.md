@@ -45,6 +45,7 @@ And the file `tst.txt` contains:
 hello
 you
 
+```
 The expected output is :
 hello
 you
@@ -53,6 +54,7 @@ you
 
 
 ## Algorithms and data structures
+
 
 
 
