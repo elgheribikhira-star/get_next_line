@@ -74,9 +74,7 @@ char	*get_next_line(int fd)
 	static char	*str;
 	char		*buff;
 	ssize_t		lire;
-	char		*extract;
 
-	extract = NULL;
 	buff = NULL;
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (free_null(&str, buff));
